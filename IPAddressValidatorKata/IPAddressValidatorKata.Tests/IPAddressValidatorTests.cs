@@ -1,9 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IPAddressValidatorKata.Tests
 {
@@ -26,24 +21,12 @@ namespace IPAddressValidatorKata.Tests
             Assert.AreEqual(expected, actual);
         }
 
-      
         [TestCase("1")]
-        public void ValidateIpv4Address_GivenASingleNumber_ShouldReturnFalse(string input)
-        {
-            //Arrange
-            var expected = false;
-            IPAddressValidator sut = new IPAddressValidator();
-
-            //Act
-            var actual = sut.ValidateIpv4Address(input);
-
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
-
         [TestCase("1.1")]
         [TestCase("1.1.1")]
-        public void ValidateIpv4Address_GivenLessThan4Numbers_ShouldReturnFalse(string input)
+        [TestCase("10.0.1")]
+        [TestCase("10.0.1.6.3.4")]
+        public void ValidateIpv4Address_GivenLessThan4GroupsOfNumbers_ShouldReturnFalse(string input)
         {
             //Arrange
             var expected = false;
@@ -59,8 +42,8 @@ namespace IPAddressValidatorKata.Tests
         [TestCase("1.1.1.1")]
         [TestCase("192.168.1.1")] 
         [TestCase("10.0.0.1")]
-        [TestCase("127.0.0.1")]
-        public void ValidateIpv4Address_Given4Numbers_ShouldReturnTrue(string input)
+        [TestCase("127.0.0.30")]
+        public void ValidateIpv4Address_Given4GroupsOfNumbers_ShouldReturnTrue(string input)
         {
             //Arrange
             var expected = true;
@@ -73,8 +56,9 @@ namespace IPAddressValidatorKata.Tests
             Assert.AreEqual(expected, actual);
         }
 
+        [TestCase("1.1.1.0")]
         [TestCase("127.0.0.0")]
-        [TestCase("127.0.0.255")]
+        [TestCase("127.0.0.255")] 
         [TestCase("255.255.255.255")]
         public void ValidateIpv4Address_Given4NumbersEndingWith0_ShouldReturnFalse(string input)
         {

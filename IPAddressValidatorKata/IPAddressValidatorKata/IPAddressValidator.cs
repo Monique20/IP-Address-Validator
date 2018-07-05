@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IPAddressValidatorKata
 {
@@ -11,23 +7,41 @@ namespace IPAddressValidatorKata
     {
         public bool ValidateIpv4Address(string ipAddress)
         {
-            if (string.IsNullOrWhiteSpace(ipAddress))
+            if (EmptyString(ipAddress))
             {
                 return false;
             }
 
-            var splitValues = ipAddress.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries);
-
-            if(splitValues.Length != 4)
+            var splitValues = SplitValues(ipAddress);
+            if (NotInFourGroups(splitValues))
             {
                 return false;
             }
-            if (splitValues[3] == "0" || splitValues[3] == "255")
+            if (NotValidHostAddress(splitValues))
             {
                 return false;
             }
             return true;
         }
 
+        private static string[] SplitValues(string ipAddress)
+        {
+            return ipAddress.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries);
+        }
+
+        private static bool NotValidHostAddress(string[] splitValues)
+        {
+            return splitValues[3] == "0" || splitValues[3] == "255";
+        }
+
+        private static bool NotInFourGroups(string[] splitValues)
+        {
+            return splitValues.Length != 4;
+        }
+
+        private static bool EmptyString(string ipAddress)
+        {
+            return string.IsNullOrWhiteSpace(ipAddress);
+        }
     }
 }
