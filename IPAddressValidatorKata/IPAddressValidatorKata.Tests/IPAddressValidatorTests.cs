@@ -12,10 +12,15 @@ namespace IPAddressValidatorKata.Tests
         {
             //Arrange
             var expected = false;
-            IPAddressValidator sut = new IPAddressValidator();
+            var nullOrEmpty =  new NullOrEmpty();
+            var notFourOctets = new NotFourOctets();
+            var notValidHost = new NotAValidHost();
+
+            nullOrEmpty.SetSuccessor(notFourOctets);
+            notFourOctets.SetSuccessor(notValidHost);
 
             //Act
-            var actual = sut.ValidateIpv4Address(input);
+            var actual = nullOrEmpty.Parse(input);
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -30,10 +35,15 @@ namespace IPAddressValidatorKata.Tests
         {
             //Arrange
             var expected = false;
-            IPAddressValidator sut = new IPAddressValidator();
+            var nullOrEmpty = new NullOrEmpty();
+            var notFourOctets = new NotFourOctets();
+            var notValidHost = new NotAValidHost();
+
+            nullOrEmpty.SetSuccessor(notFourOctets);
+            notFourOctets.SetSuccessor(notValidHost);
 
             //Act
-            var actual = sut.ValidateIpv4Address(input);
+            var actual = nullOrEmpty.Parse(input);
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -47,10 +57,15 @@ namespace IPAddressValidatorKata.Tests
         {
             //Arrange
             var expected = true;
-            IPAddressValidator sut = new IPAddressValidator();
+            var nullOrEmpty = new NullOrEmpty();
+            var notFourOctets = new NotFourOctets();
+            var notValidHost = new NotAValidHost();
+
+            nullOrEmpty.SetSuccessor(notFourOctets);
+            notFourOctets.SetSuccessor(notValidHost);
 
             //Act
-            var actual = sut.ValidateIpv4Address(input);
+            var actual = nullOrEmpty.Parse(input);
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -64,10 +79,15 @@ namespace IPAddressValidatorKata.Tests
         {
             //Arrange
             var expected = false;
-            IPAddressValidator sut = new IPAddressValidator();
+            var nullOrEmpty = new NullOrEmpty();
+            var notFourOctets = new NotFourOctets();
+            var notValidHost = new NotAValidHost();
+
+            nullOrEmpty.SetSuccessor(notFourOctets);
+            notFourOctets.SetSuccessor(notValidHost);
 
             //Act
-            var actual = sut.ValidateIpv4Address(input);
+            var actual = nullOrEmpty.Parse(input);
 
             //Assert
             Assert.AreEqual(expected, actual);

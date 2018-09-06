@@ -41,6 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IPAddressValidator.cs" />
+    <Compile Include="IParser.cs" />
+    <Compile Include="NotAValidHost.cs" />
+    <Compile Include="NotFourOctets.cs" />
+    <Compile Include="NullOrEmpty.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
