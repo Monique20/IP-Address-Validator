@@ -20,7 +20,7 @@ namespace IPAddressValidatorKata.Tests
             notFourOctets.SetSuccessor(notValidHost);
 
             //Act
-            var actual = nullOrEmpty.Parse(input);
+            var actual = nullOrEmpty.ValidateIPAddress(input);
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -43,7 +43,7 @@ namespace IPAddressValidatorKata.Tests
             notFourOctets.SetSuccessor(notValidHost);
 
             //Act
-            var actual = nullOrEmpty.Parse(input);
+            var actual = nullOrEmpty.ValidateIPAddress(input);
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -65,7 +65,7 @@ namespace IPAddressValidatorKata.Tests
             notFourOctets.SetSuccessor(notValidHost);
 
             //Act
-            var actual = nullOrEmpty.Parse(input);
+            var actual = nullOrEmpty.ValidateIPAddress(input);
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -87,7 +87,7 @@ namespace IPAddressValidatorKata.Tests
             notFourOctets.SetSuccessor(notValidHost);
 
             //Act
-            var actual = nullOrEmpty.Parse(input);
+            var actual = nullOrEmpty.ValidateIPAddress(input);
 
             //Assert
             Assert.AreEqual(expected, actual);

@@ -40,8 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IPAddressValidator.cs" />
-    <Compile Include="IParser.cs" />
+    <Compile Include="IValidator.cs" />
     <Compile Include="NotAValidHost.cs" />
     <Compile Include="NotFourOctets.cs" />
     <Compile Include="NullOrEmpty.cs" />

@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace IPAddressValidatorKata
 {
-    public class NotAValidHost : IParser
+    public class NotAValidHost : IValidator
     {
-        private IParser _nextParser;
+        private IValidator _nextValidator;
 
-        public void SetSuccessor(IParser nextParser)
+        public void SetSuccessor(IValidator nextValidator)
         {
-            _nextParser = nextParser;
+            _nextValidator = nextValidator;
         }
 
-        public bool Parse(string ipAddress)
+        public bool ValidateIPAddress(string ipAddress)
         {
             var splitValues = SplitValues(ipAddress);
             if (NotValidHostAddress(splitValues))

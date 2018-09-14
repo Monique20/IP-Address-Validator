@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace IPAddressValidatorKata
 {
-    public interface IParser
+    public interface IValidator
     {
-        bool Parse(string ipAddress);
-        void SetSuccessor(IParser nextParser);
+        bool ValidateIPAddress(string ipAddress);
+        void SetSuccessor(IValidator nextValidator);
     }
 }

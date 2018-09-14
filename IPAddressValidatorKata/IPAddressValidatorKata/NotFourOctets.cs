@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace IPAddressValidatorKata
 {
-    public class NotFourOctets : IParser
+    public class NotFourOctets : IValidator
     {
-        private IParser _nextParser;
+        private IValidator _nextValidator;
 
-        public void SetSuccessor(IParser nextParser)
+        public void SetSuccessor(IValidator nextValidator)
         {
-            _nextParser = nextParser;
+            _nextValidator = nextValidator;
         }
 
-        public bool Parse(string ipAddress)
+        public bool ValidateIPAddress(string ipAddress)
         {
             var splitValues = SplitValues(ipAddress);
             if (NotInFourGroups(splitValues))
             {
                 return false;
             }
-            return _nextParser.Parse(ipAddress);
+            return _nextValidator.ValidateIPAddress(ipAddress);
         }
 
         private static bool NotInFourGroups(string[] splitValues)
